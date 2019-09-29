@@ -119,7 +119,7 @@ Please replace the `--ip YOUR_IP` and `--port YOUR_PORT` for
 
     ```bash
     python run_imitator.py --gpu_ids 0 --model imitator --output_dir ./outputs/results/  \
-        --src_path      ./assets/src_imgs/internet/nathan.png    \
+        --src_path      ./assets/src_imgs/internet/men1_256.jpg    \
         --tgt_path      ./assets/samples/refs/iPER/024_8_2    \
         --bg_ks 7   --ft_ks 3 \
         --has_detector  --post_tune --front_warp \
@@ -143,7 +143,7 @@ Please replace the `--ip YOUR_IP` and `--port YOUR_PORT` for
 
     ```bash
     python run_view.py --gpu_ids 0 --model viewer --output_dir ./outputs/results/  \
-        --src_path      ./assets/src_imgs/internet/frog.jpg    \
+        --src_path      ./assets/src_imgs/internet/men1_256.jpg    \
         --bg_ks 13  --ft_ks 3 \
         --has_detector  --post_tune --front_warp --bg_replace \
         --save_res --ip 0.0.0.0 --port 8097
