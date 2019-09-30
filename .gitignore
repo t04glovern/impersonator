@@ -6,6 +6,7 @@ tools/*
 pretrains
 assets/samples
 outputs/results
+outputs/checkpoints/running
 *debug.sh
 *debug.py
 *build
@@ -13,3 +14,4 @@ outputs/results
 thirdparty/neural_renderer/files.txt
 piao_scripts
 .vscode
+nathan.png

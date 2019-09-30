@@ -71,59 +71,88 @@ The results are saved in `./outputs/results/demos`
 1. Demo of Motion Imitation
 
     ```bash
-    python demo_imitator.py --gpu_ids 1
+    python demo_imitator.py --gpu_ids 0
     ```
 
 2. Demo of Appearance Transfer
 
     ```bash
-    python demo_swap.py --gpu_ids 1
+    python demo_swap.py --gpu_ids 0
     ```
 
 3. Demo of Novel View Synthesis
 
     ```bash
-    python demo_view.py --gpu_ids 1
+    python demo_view.py --gpu_ids 0
     ```
 
 ### Running Scripts (examples) (Details)
+
+Extract frames from videos
+
+```bash
+ffmpeg -i assets/samples/refs/random/success/interp.mp4 assets/samples/refs/random/success/images/%04d.jpg -hide_banner
+```
 
 If you want to test other inputs (source image and reference images), here are some examples.
 Please replace the `--ip YOUR_IP` and `--port YOUR_PORT` for
 [Visdom](https://github.com/facebookresearch/visdom) visualization.
 
 1. Motion Imitation
+
     * source image from iPER dataset
 
     ```bash
-    python run_imitator.py --gpu_ids 0 --model imitator --output_dir ./outputs/results/  \
-        --src_path      ./assets/src_imgs/imper_A_Pose/009_5_1_000.jpg    \
-        --tgt_path      ./assets/samples/refs/iPER/024_8_2    \
-        --bg_ks 13  --ft_ks 3 \
-        --has_detector  --post_tune  \
-        --save_res --ip 0.0.0.0 --port 8097
+    python run_imitator.py \
+        --gpu_ids 0 \
+        --model imitator \
+        --output_dir outputs/results \
+        --src_path assets/src_imgs/imper_A_Pose/009_5_1_000.jpg \
+        --tgt_path assets/samples/refs/iPER/024_8_2 \
+        --bg_ks 13 \
+        --ft_ks 3 \
+        --has_detector \
+        --post_tune \
+        --save_res \
+        --ip 0.0.0.0 \
+        --port 8097
     ```
 
     * source image from DeepFashion dataset
 
     ```bash
-    python run_imitator.py --gpu_ids 0 --model imitator --output_dir ./outputs/results/  \
-        --src_path      ./assets/src_imgs/fashion_woman/Sweaters-id_0000088807_4_full.jpg    \
-        --tgt_path      ./assets/samples/refs/iPER/024_8_2    \
-        --bg_ks 25  --ft_ks 3 \
-        --has_detector  --post_tune  \
-        --save_res --ip 0.0.0.0 --port 8097
+    python run_imitator.py \
+        --gpu_ids 0 \
+        --model imitator \
+        --output_dir outputs/results \
+        --src_path assets/src_imgs/fashion_woman/Sweaters-id_0000088807_4_full.jpg \
+        --tgt_path assets/samples/refs/iPER/024_8_2 \
+        --bg_ks 25 \
+        --ft_ks 3 \
+        --has_detector \
+        --post_tune \
+        --save_res \
+        --ip 0.0.0.0 \
+        --port 8097
     ```
 
     * source image from Internet
 
     ```bash
-    python run_imitator.py --gpu_ids 0 --model imitator --output_dir ./outputs/results/  \
-        --src_path      ./assets/src_imgs/internet/men1_256.jpg    \
-        --tgt_path      ./assets/samples/refs/iPER/024_8_2    \
-        --bg_ks 7   --ft_ks 3 \
-        --has_detector  --post_tune --front_warp \
-        --save_res --ip 0.0.0.0 --port 8097
+    python run_imitator.py \
+        --gpu_ids 0 \
+        --model imitator \
+        --output_dir outputs/results \
+        --src_path assets/src_imgs/internet/men1_256.jpg \
+        --tgt_path assets/samples/refs/iPER/024_8_2 \
+        --bg_ks 7 \
+        --ft_ks 3 \
+        --has_detector \
+        --post_tune \
+        --front_warp \
+        --save_res \
+        --ip 0.0.0.0 \
+        --port 8097
     ```
 
 2. Appearance Transfer
@@ -131,22 +160,40 @@ Please replace the `--ip YOUR_IP` and `--port YOUR_PORT` for
     An example that source image from iPER and reference image from DeepFashion dataset.
 
     ```bash
-    python run_swap.py --gpu_ids 0 --model imitator --output_dir ./outputs/results/  \
-        --src_path      ./assets/src_imgs/imper_A_Pose/024_8_2_0000.jpg    \
-        --tgt_path      ./assets/src_imgs/fashion_man/Sweatshirts_Hoodies-id_0000680701_4_full.jpg    \
-        --bg_ks 13  --ft_ks 3 \
-        --has_detector  --post_tune  --front_warp --swap_part body  \
-        --save_res --ip 0.0.0.0 --port 8097
+    python run_swap.py \
+        --gpu_ids 0 \
+        --model imitator \
+        --output_dir outputs/results \
+        --src_path assets/src_imgs/imper_A_Pose/024_8_2_0000.jpg \
+        --tgt_path assets/src_imgs/fashion_man/Sweatshirts_Hoodies-id_0000680701_4_full.jpg \
+        --bg_ks 13 \
+        --ft_ks 3 \
+        --has_detector \
+        --post_tune \
+        --front_warp \
+        --swap_part body \
+        --save_res \
+        --ip 0.0.0.0 \
+        --port 8097
     ```
 
 3. Novel View Synthesis
 
     ```bash
-    python run_view.py --gpu_ids 0 --model viewer --output_dir ./outputs/results/  \
-        --src_path      ./assets/src_imgs/internet/men1_256.jpg    \
-        --bg_ks 13  --ft_ks 3 \
-        --has_detector  --post_tune --front_warp --bg_replace \
-        --save_res --ip 0.0.0.0 --port 8097
+    python run_view.py \
+        --gpu_ids 0 \
+        --model viewer \
+        --output_dir outputs/results \
+        --src_path assets/src_imgs/internet/men1_256.jpg \
+        --bg_ks 13 \
+        --ft_ks 3 \
+        --has_detector \
+        --post_tune \
+        --front_warp \
+        --bg_replace \
+        --save_res \
+        --ip 0.0.0.0 \
+        --port 8097
     ```
 
 The details of each running scripts are shown in [runDetails.md](doc/runDetails.md).
@@ -154,7 +201,16 @@ The details of each running scripts are shown in [runDetails.md](doc/runDetails.
 ### Create GIF
 
 ```bash
-convert -delay 10 -loop 0 ./outputs/results/imgs/*.jpg animation.gif
+ffmpeg -f image2 -i outputs/results/imgs/%*.jpg -c:v libx264 -pix_fmt yuv420p out.mp4 -y && \
+ffmpeg -f image2 -i outputs/results/imitators/gt_%04d.jpg -c:v libx264 -pix_fmt yuv420p out2.mp4 -y && \
+ffmpeg -f image2 -i outputs/results/imitators/pred_%04d.jpg -c:v libx264 -pix_fmt yuv420p out3.mp4 -y && \
+ffmpeg -i out2.mp4 -filter_complex "[0:v] palettegen" palette.png -y && \
+ffmpeg -i out2.mp4 -i palette.png -filter_complex "[0:v][1:v] paletteuse" endresult.gif -y && \
+ffmpeg -i out3.mp4 -filter_complex "[0:v] palettegen" palette2.png -y && \
+ffmpeg -i out3.mp4 -i palette2.png -filter_complex "[0:v][1:v] paletteuse" endresult2.gif -y && \
+ffmpeg -i endresult.gif -i endresult2.gif -filter_complex hstack outputstack2.gif -y && \
+ffmpeg -i outputstack2.gif -f mp4 -c:v libx264 -pix_fmt yuv420p combined.mp4 && \
+rm outputstack2.gif palette2.png endresult2.gif endresult.gif palette.png out3.mp4 out2.mp4 out.mp4
 ```
 
 ### Training from Scratch

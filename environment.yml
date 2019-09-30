@@ -1,11 +1,13 @@
 name: impersonator
-channels: # Allow conda-forge (community packages)
+channels:
   - omgarcia
+  - conda-forge
   - defaults
 dependencies:
-  - python=3.6
+  - python=3.7
   - jupyter
   - gcc-6
+  - certifi
   - matplotlib
   - numpy
   - pip
