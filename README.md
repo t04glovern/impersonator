@@ -15,7 +15,7 @@ Liquid Warping GAN: A Unified Framework for Human Motion Imitation, Appearance T
 	<img src='assets/visuals/appearance/Sweaters-id_0000337302_4_full.gif' width="135"/>
 	<img src='assets/visuals/novel/Jackets_Vests-id_0000071603_4_full.jpg' width="135"/>
     <img src='assets/visuals/novel/Jackets_Vests-id_0000071603_4_full.gif' width="135"/>
-    <img src='assets/visuals/motion/009_5_1_000.jpg' width="135"/>    
+    <img src='assets/visuals/motion/009_5_1_000.jpg' width="135"/>
   	<img src='assets/visuals/motion/mixamo_0031_000.gif' width="135"/>
   	<img src='assets/visuals/appearance/001_19_1_000.jpg' width="135"/>
 	<img src='assets/visuals/appearance/001_19_1_000.gif' width="135"/>
@@ -216,6 +216,15 @@ rm outputstack2.gif palette2.png endresult2.gif endresult.gif palette.png out3.m
 ### Training from Scratch
 
 The details are shown in [train.md](./doc/train.md) [TODO].
+
+## Announcement
+
+In our paper, the results of LPIPS reported in Table 1, are calculated by **1 – distance score**;
+thereby, the larger is more similar between two images. The beginning intention of using **1 – distance score** is that it is more accurate to meet the definition of **Similarity** in LPIPS.
+
+However, most other papers use the original definition that LPIPS = distance score;
+therefore, to eliminate the ambiguity and make it consistent with others,
+we update the results in Table 1 with the original definition in the [latest paper](https://arxiv.org/pdf/1909.12224.pdf).
 
 ## Citation
 
